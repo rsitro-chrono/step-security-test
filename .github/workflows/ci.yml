@@ -26,3 +26,10 @@ jobs:
       run: |
         docker run -p 5000:5000 python-docker-app
 
+  security:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: chronograph-pe/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f
+          with:
+            egress-policy: audit
+
