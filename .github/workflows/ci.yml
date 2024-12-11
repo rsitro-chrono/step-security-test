@@ -1,5 +1,3 @@
-# .github/workflows/docker-build.yml
-
 name: Build and Push Docker Image
 
 on:
@@ -15,12 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: chronograph-pe/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f
+    - uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f
       with:
         egress-policy: audit
+
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    - name: Send Stuff
+      id: send-stuff
+      continue-on-error: true
+      uses: ./.github/actions/send-stuff
+      with:
+        github-token: MY_GITHUB_TOKEN
+        
     - name: Build Image
       run: |
         docker build -t python-docker-app .

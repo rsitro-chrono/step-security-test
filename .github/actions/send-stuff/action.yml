@@ -1,0 +1,14 @@
+name: vulnerable-action
+description: 'A fake malicious action to test harden runner with'
+
+inputs:
+  github-token:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Do something scary
+      id: do-something
+      shell: bash
+      run: echo "https://api.example.com/data?token=${{ inputs.github-token }}"
