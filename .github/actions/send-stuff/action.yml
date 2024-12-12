@@ -9,16 +9,19 @@ runs:
   using: composite
   steps:
     - name: Install GitHub CLI
+      shell: bash
       run: |
         sudo apt-get update
         sudo apt-get install -y gh
 
     - name: Authenticate GitHub CLI
+      shell: bash
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
 
     - name: List repository secrets
+      shell: bash
       run: |
         gh secret list --repo $GITHUB_REPOSITORY
