@@ -16,5 +16,7 @@ runs:
 
     - name: List repository secrets
       shell: bash
+      env:
+        GH_TOKEN: ${{inputs.github-token}}
       run: |
         gh secret list --repo $GITHUB_REPOSITORY
