@@ -14,13 +14,6 @@ runs:
         sudo apt-get update
         sudo apt-get install -y gh
 
-    - name: Authenticate GitHub CLI
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{ inputs.github-token }}
-      run: |
-        echo "${{ inputs.github-token }}" | gh auth login --with-token
-
     - name: List repository secrets
       shell: bash
       run: |
