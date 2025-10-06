@@ -1,0 +1,37 @@
+// package.json - Save this as package.json in your test repository
+{
+  "name": "dependabot-test-project",
+  "version": "1.0.0",
+  "description": "Test project for triggering Dependabot alerts",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests\" && exit 0"
+  },
+  "dependencies": {
+    // Known vulnerable versions - these will trigger Dependabot alerts
+    "lodash": "4.17.15",           // Multiple CVEs including prototype pollution
+    "axios": "0.18.0",             // CVE-2019-10742 - SSRF vulnerability
+    "express": "4.16.0",           // Multiple security vulnerabilities
+    "minimist": "0.0.8",           // CVE-2020-7598 - Prototype pollution
+    "node-fetch": "2.6.0",         // CVE-2020-15168
+    "jquery": "3.4.0",             // Multiple XSS vulnerabilities
+    "ws": "7.2.0",                 // DoS vulnerability
+    "json-schema": "0.2.3",        // CVE-2021-3918
+    "tar": "4.4.8",                // Arbitrary file write vulnerability
+    "ajv": "6.10.0"                // Prototype pollution CVE-2020-15366
+  },
+  "devDependencies": {
+    "mocha": "7.0.0"               // May have vulnerabilities in dependencies
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/dependabot-test"
+  },
+  "keywords": ["dependabot", "security", "testing"],
+  "author": "Your Name",
+  "license": "MIT"
+}
